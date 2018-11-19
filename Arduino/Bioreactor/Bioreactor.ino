@@ -1,4 +1,6 @@
 char *incMsg = malloc(sizeof(char) * 256);
+
+float targetMotorSpeed;
 void setup() {
   Serial.begin(9600);
 }
