@@ -1,0 +1,3 @@
+SENSOR {sensor} {millis} {value}
+SET {constant} {value}
+DEBUG {message}
