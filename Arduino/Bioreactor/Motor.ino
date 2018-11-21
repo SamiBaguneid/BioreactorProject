@@ -2,7 +2,7 @@
 float targetMotorSpeed;
 // float targetPH;
 // float targetTemperature;
-float motorSpeed;
+// float motorSpeed;
 // float ph;
 // float temperature;
 
