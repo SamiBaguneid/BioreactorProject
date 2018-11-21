@@ -1,3 +1,6 @@
+ARDUINO -> PROCESSING
 SENSOR {sensor} {millis} {value}
-SET {constant} {value}
 DEBUG {message}
+
+PROCESSING -> ARDUINO
+SET {constant} {value}
