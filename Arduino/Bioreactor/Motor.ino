@@ -7,9 +7,7 @@ float motorSpeed;
 // float temperature;
 
 // Functions:
-void sendReading(int sensor, float value) {
-  
-}
+// void sendReading(int sensor, float value)
 // void sendDebug(char *message)
 
 void checkRequiredRPM {
@@ -34,10 +32,10 @@ void calculateRPM() {
 
 void checkRPM() {
   if(RPM < (requiredRPM - 20)) {
-    //speed up
+    //speed up using PWM
   }
   else if(RPM > (requiredRPM + 20)) {
-    //slow down
+    //slow down using PWM
   }
   else {
     continue;
@@ -64,5 +62,6 @@ void motor_loop(){
   getPhotoInterrupt();
   calculateRPM();
   checkRPM();
+  sendReading(1, RPM);
   
 }
