@@ -4,11 +4,14 @@ float targetMotorSpeed;
 float targetPH;
 float targetTemperature;
 
-//float sendInterval;
+
 
 float motorSpeed;
 float ph;
 float temperature;
+
+float sendInterval = 100;
+float lastSendTime = 0;
 
 void setup() {
   Serial.begin(9600);
@@ -22,6 +25,14 @@ void loop() {
   motor_loop();
   ph_loop();
   temp_loop();
+
+  if (lastSendTime + sendInterval > millis()){
+    receiveSerial();
+    writeReading(0, motorSpeed);
+    writeReading(1, ph);
+    writeReading(2, temperature);
+    lastSendTime = millis();    
+  }
 }
 void sendReading(int sensor, float value){
   if (sensor == 0){
@@ -60,6 +71,16 @@ void processMessage(char *msg){
   if (startswith(msg, "SET ")){
     char* constant = splitSpace(msg + 4);
     char* value = splitSpace(msg + len(constant));
+    float val = strToFloat(value);
+    if (constant == "targetMotorSpeed"){
+        targetMotorSpeed = val;
+    }else if (constant == "targetPH"){
+        targetPH = val;
+    }else if (constant == "targetTemperature"){
+        targetTemperature = val;
+    }
+    free(constant);
+    free(value);
   }
 }
 void appendString(char *string, char a){
@@ -72,6 +93,41 @@ void appendString(char *string, char a){
   }
   *(string + i++) = a;
   *(string + i) = 0;
+}
+float strToFloat(char *val){
+  bool negative = false;
+  float out = 0;
+  bool decimalPoint = false;
+  int j = 0;
+  int i = 0;
+  if (*val == '-'){
+    negative = true;
+    i = 1;
+  }
+  for (; *(val + i) != 0; i++){
+    char c = *(val + i);
+    if (!decimalPoint){
+      if (c == '.'){
+        decimalPoint = true;
+        j = i;
+        continue;
+      }
+      out *= 10;
+      out += charToInt(c);
+    }else{
+      if (c == '.')
+        return out;
+      float a = pow(10, j - i);
+      a *= charToInt(c);
+      out += a;
+    }
+  }
+  return out;
+}
+int charToInt(char c){
+  if (48 <= c && c <= 58)
+    return c - 48;
+  return 0;
 }
 int len(char *string){
   int i = 0;
