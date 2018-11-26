@@ -4,11 +4,9 @@ float targetMotorSpeed;
 float targetPH;
 float targetTemperature;
 
-
-
-float motorSpeed;
-float ph;
-float temperature;
+float motorSpeed = 0.235;
+float ph = 12.2354;
+float temperature = -12.5;
 
 float sendInterval = 100;
 float lastSendTime = 0;
@@ -49,7 +47,7 @@ void writeReading(int sensor, float value){
   Serial.print(" ");
   Serial.print(millis());
   Serial.print(" ");
-  Serial.print(value);
+  printFloat(value);
   Serial.print("\n");
 }
 void sendDebug(char *message){
@@ -123,6 +121,28 @@ float strToFloat(char *val){
     }
   }
   return out;
+}
+void printFloat(float val){
+  while (val != 0){
+    if (val < 0){
+      Serial.print('-');
+      val *= -1;
+    }
+    float c = val;
+    float i = 1;
+    while (c >= 10){
+      if (val > 1){
+        c /= 10;
+        i *= 10;
+      }else{
+        c *= 10;
+        i /= 10;
+      }
+    }
+    int j = floor(c);
+    Serial.print(j);
+    val -= i * j;
+  }
 }
 int charToInt(char c){
   if (48 <= c && c <= 58)
