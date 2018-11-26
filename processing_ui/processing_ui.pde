@@ -1,6 +1,12 @@
+import processing.serial.*;
+
+SerialInterface serialInterface = new SerialInterface();
+
+
 void setup(){
   size(700, 700);
   surface.setResizable(true);
+  serialInterface.Start(this);
 }
 
 
