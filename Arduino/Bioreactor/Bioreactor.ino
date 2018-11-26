@@ -3,13 +3,16 @@ char *incMsg = malloc(sizeof(char) * 256);
 float targetMotorSpeed;
 float targetPH;
 float targetTemperature;
+long int lastUpdateTime[] = {0, 0, 0};
 
 float motorSpeed = 0.235;
 float ph = 12.2354;
 float temperature = -12.5;
 
-float sendInterval = 2000;
-float lastSendTime = 0;
+long int sendInterval = 2000;
+long int lastSendTime = 0;
+
+int decimalPlaces = 3;
 
 void setup() {
   Serial.begin(9600);
@@ -33,6 +36,9 @@ void loop() {
   }
 }
 void sendReading(int sensor, float value){
+  if (sensor >= 0 && sensor <=2){
+    lastUpdateTime[sensor] = millis();
+  }
   if (sensor == 0){
     motorSpeed = value;
   }else if (sensor == 1){
@@ -42,15 +48,16 @@ void sendReading(int sensor, float value){
   }
 }
 void writeReading(int sensor, float value){
-  Serial.print("SENSOR ");
-  Serial.print(sensor);
-  Serial.print(" ");
-  Serial.print(millis());
-  Serial.print(" ");
-  char strOut[16];
-  sprintf(strOut, "%f", value);
-  Serial.print(strOut);
-  Serial.print("\n");
+  if (lastUpdateTime[sensor] != -1){
+    Serial.print("SENSOR ");
+    Serial.print(sensor);
+    Serial.print(" ");
+    Serial.print(lastUpdateTime[sensor]);
+    Serial.print(" ");
+    Serial.print(value, decimalPlaces);
+    Serial.print("\n");
+    lastUpdateTime[sensor] = -1;
+  }
 }
 void sendDebug(char *message){
   Serial.print("DEBUG ");
@@ -123,36 +130,6 @@ float strToFloat(char *val){
     }
   }
   return out;
-}
-void printFloat(float val){
-  float val_copy = val;
-  if (val < 0){
-    Serial.print('-');
-    val *= -1;
-  }
-  while (val > 1){ 
-    float c = val;
-    float i = 1;
-    while (c >= 10){
-      c /= 10;
-      i *= 10;
-    }
-    int j = floor(c);
-    Serial.print(j);
-    val -= i * j;
-  }
-  Serial.print('.');
-  while (val > 0){
-    float c = val;
-    float i = 1;
-    while (c < 1){
-      c *= 10;
-      i /= 10;
-    }
-    int j = floor(c);
-    Serial.print(j);
-    val -= i * j;
-  }
 }
 int charToInt(char c){
   if (48 <= c && c <= 58)
