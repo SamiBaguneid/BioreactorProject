@@ -20,6 +20,7 @@ void setup() {
   motor_setup();
   ph_setup();
   temp_setup();
+  sendDebug("test");
 }
 
 void loop() {
@@ -69,15 +70,17 @@ void receiveSerial(){
     char c = Serial.read();
     if (c == '\n'){
       processMessage(incMsg);
+      *incMsg = 0;
     }else{
       appendString(incMsg, c);
     }
   }
 }
 void processMessage(char *msg){
+  sendDebug(msg);
   if (startswith(msg, "SET ")){
     char* constant = splitSpace(msg + 4);
-    char* value = splitSpace(msg + len(constant));
+    char* value = splitSpace(msg + len(constant) - 1);
     float val = strToFloat(value);
     if (constant == "targetMotorSpeed"){
         targetMotorSpeed = val;
