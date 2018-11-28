@@ -1,7 +1,7 @@
 char *incMsg = malloc(sizeof(char) * 256);
 
 float targets[] = {0, 0, 0};
-long int lastUpdateTime[] = {0, 0, 0};
+int lastUpdateTime[] = {0, 0, 0};
 
 float values[] = {0, 0, 0};
 
