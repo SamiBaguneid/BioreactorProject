@@ -15,7 +15,7 @@ class SerialInterface{
   }
   
   void receiveMessage(){
-    while (port.available() > 0){
+    while (port != null && port.available() > 0){
       char c = port.readChar();
       if (c == '\n'){
         processMessage(incMsg);
