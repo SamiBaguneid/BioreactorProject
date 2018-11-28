@@ -13,15 +13,11 @@ void setup(){
   }
 }
 
-
-
 void draw(){
   canvas_background();
   options();
   user_input();
 }
-
-
 
 void options(){
   int no_of_options = 3;

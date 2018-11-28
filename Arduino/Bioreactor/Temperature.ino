@@ -1,3 +1,8 @@
+// Sensors ints:
+// 0 = Motor
+// 1 = PH
+// 2 = Temperature
+
 // Functions:
 // float getReading(int sensor)
 // float getTarget(int sensor)
