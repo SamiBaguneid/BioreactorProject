@@ -31,6 +31,7 @@ class SerialInterface{
       println(msg);
     }else if (msg.substring(7) == "SENSOR "){
       //Use sensor reading
+      println(msg);
     }else{
       println(msg);
     }

@@ -1,13 +1,9 @@
 char *incMsg = malloc(sizeof(char) * 256);
 
-float targetMotorSpeed;
-float targetPH;
-float targetTemperature;
+float targets[] = {0, 0, 0};
 long int lastUpdateTime[] = {0, 0, 0};
 
-float motorSpeed = 0.235;
-float ph = 12.2354;
-float temperature = -12.5;
+float values[] = {0, 0, 0};
 
 long int sendInterval = 2000;
 long int lastSendTime = 0;
@@ -30,22 +26,28 @@ void loop() {
 
   if (lastSendTime + sendInterval < millis()){
     receiveSerial();
-    writeReading(0, motorSpeed);
-    writeReading(1, ph);
-    writeReading(2, temperature);
+    for (int i = 0; i < 3; i++){
+      writeReading(i, values[i]);
+    }
     lastSendTime = millis();    
   }
+}
+float getReading(int sensor){
+  if (sensor >= 0 && sensor <= 2){
+    return values[sensor];
+  }
+  return 0;
+}
+float getTargetReading(int sensor){
+  if (sensor >= 0 && sensor <= 2){
+    return targets[sensor];
+  }
+  return 0;
 }
 void sendReading(int sensor, float value){
   if (sensor >= 0 && sensor <=2){
     lastUpdateTime[sensor] = millis();
-  }
-  if (sensor == 0){
-    motorSpeed = value;
-  }else if (sensor == 1){
-    ph = value;
-  }else if (sensor == 2){
-    temperature = value;
+    values[sensor] = value;
   }
 }
 void writeReading(int sensor, float value){
@@ -83,11 +85,11 @@ void processMessage(char *msg){
     char* value = splitSpace(msg + len(constant) - 1);
     float val = strToFloat(value);
     if (constant == "targetMotorSpeed"){
-        targetMotorSpeed = val;
+        targets[0] = val;
     }else if (constant == "targetPH"){
-        targetPH = val;
+        targets[1] = val;
     }else if (constant == "targetTemperature"){
-        targetTemperature = val;
+        targets[2] = val;
     }
     free(constant);
     free(value);
