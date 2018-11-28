@@ -1,12 +1,16 @@
 import processing.serial.*;
 
 SerialInterface serialInterface = new SerialInterface();
-
+CSV csv = new CSV();
 
 void setup(){
   size(700, 700);
   surface.setResizable(true);
   serialInterface.Start(this);
+  csv.makeFile();
+  for (int i = 0; i < 1000; i++){
+    csv.addData(i, (int) random(0, 2), random(100));
+  }
 }
 
 

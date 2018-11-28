@@ -27,11 +27,15 @@ class SerialInterface{
   }
   
   void processMessage(String msg){
-    if (msg.substring(6) == "DEBUG "){
+    String[] args = msg.split(" ");
+    if (args[0].equals("DEBUG")){
       println(msg);
-    }else if (msg.substring(7) == "SENSOR "){
+    }else if (args[0].equals("SENSOR")){
       //Use sensor reading
-      println(msg);
+      int sensor = int(args[1]);
+      int time = int(args[2]);
+      float val = float(args[3]);
+      csv.addData(sensor, time, val);
     }else{
       println(msg);
     }
