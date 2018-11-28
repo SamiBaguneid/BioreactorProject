@@ -1,12 +1,11 @@
-// Readonly Variables:
-// float targetMotorSpeed;
-// float targetPH;
-// float targetTemperature;
-// float motorSpeed;
-// float ph;
-// float temperature;
+// Sensors ints:
+// 0 = Motor
+// 1 = PH
+// 2 = Temperature
 
 // Functions:
+// float getReading(int sensor)
+// float getTarget(int sensor)
 // void sendReading(int sensor, float value)
 // void sendDebug(char *message)
 

@@ -1,4 +1,11 @@
+// Sensors ints:
+// 0 = Motor
+// 1 = PH
+// 2 = Temperature
+
 // Functions:
+// float getReading(int sensor)
+// float getTarget(int sensor)
 // void sendReading(int sensor, float value)
 // void sendDebug(char *message)
 
@@ -18,7 +25,7 @@ long endTime = 0;
 long timePassed = 0;
 
 void checkRequiredRPM() {
-  requiredRPM = targetMotorSpeed;
+  requiredRPM = getTarget(0);
 }
 
 void getPhotoInterrupt() {
