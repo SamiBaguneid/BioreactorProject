@@ -3,8 +3,22 @@ import processing.serial.*;
 SerialInterface serialInterface = new SerialInterface();
 CSV csv = new CSV();
 
+Graph tempGraph;
+Graph phGraph;
+Graph motorGraph;
+
 void setup(){
   size(700, 700);
+  
+  tempGraph = new Graph(0, 0, width / 2, height / 2);
+  tempGraph.setYRange(0, 1000);
+  
+  phGraph = new Graph(0, 350, width/2, height/2);
+  phGraph.setYRange(-50, 50);
+
+  motorGraph = new Graph(350, 0, width/2, height/4);
+  motorGraph.setYRange(0, 100);
+  
   surface.setResizable(true);
   serialInterface.Start(this);
   csv.makeFile();
