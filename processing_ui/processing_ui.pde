@@ -85,6 +85,26 @@ void user_input(){
   fill(0);
   rect(lowest_x + x_bezel*4 + box_width*2 + 20, lowest_y + y_bezel, box_width, box_width);
 }
+void mouseClicked(){
+  int no_of_options = 3;
+  int bezel_height = round(20 * y_sf());
+  int rect_width = round(100 * x_sf());
+  int rect_height = round(35 * y_sf());
+  int lowest_x = width/2;
+  int lowest_y = height/2;
+  int bezel_width = ((width/2)%rect_width)/(no_of_options + 1);
+  if(mouseY > lowest_y + bezel_height && mouseY < lowest_y + bezel_height + rect_height){
+    if(mouseX > lowest_x + bezel_width && mouseX <  lowest_x + bezel_width + rect_width){
+      println(mouseX); 
+    }
+    if(mouseX > lowest_x + bezel_width*2 + rect_width && mouseX <  lowest_x + bezel_width*2 + rect_width*2){
+      println(mouseX);
+    }
+    if(mouseX > lowest_x + bezel_width*3 + rect_width*2 && mouseX <  lowest_x + bezel_width*3 + rect_width*3){
+      println(mouseX);
+    }
+  }
+}
 
 
 
