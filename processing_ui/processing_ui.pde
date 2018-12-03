@@ -11,10 +11,12 @@ void setup(){
   size(700, 700);
   
   tempGraph = new Graph(0, 0, width / 2, height / 2);
+  tempGraph.setXRange(0, 100000);
   tempGraph.setYRange(0, 1000);
   
   phGraph = new Graph(0, height/2, width/2, height/2);
-  phGraph.setYRange(-50, 50);
+  phGraph.setXRange(0, 100000);
+  phGraph.setYRange(0, 100000);
 
   motorGraph = new Graph(width/2, 0, width/2, height/2);
   motorGraph.setYRange(0, 100);
@@ -29,6 +31,9 @@ void draw(){
   options();
   user_input();
   onWindowSizeChanged();
+  tempGraph.plotAll();
+  phGraph.plotAll();
+  motorGraph.plotAll();
   serialInterface.receiveMessage();
 }
 

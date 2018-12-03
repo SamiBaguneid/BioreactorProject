@@ -36,6 +36,13 @@ class SerialInterface{
       int time = int(args[2]);
       float val = float(args[3]);
       csv.addData(sensor, time, val);
+      if (sensor == 0){
+        motorGraph.addData(time, val);
+      }else if (sensor == 1){
+        phGraph.addData(time, val);
+      }else if (sensor == 2){
+        tempGraph.addData(time, val);
+      }
     }else{
       println(msg);
     }
