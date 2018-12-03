@@ -3,8 +3,22 @@ import processing.serial.*;
 SerialInterface serialInterface = new SerialInterface();
 CSV csv = new CSV();
 
+Graph tempGraph;
+Graph phGraph;
+Graph motorGraph;
+
 void setup(){
   size(700, 700);
+  
+  tempGraph = new Graph(0, 0, width / 2, height / 2);
+  tempGraph.setYRange(0, 1000);
+  
+  phGraph = new Graph(0, height/2, width/2, height/2);
+  phGraph.setYRange(-50, 50);
+
+  motorGraph = new Graph(width/2, 0, width/2, height/2);
+  motorGraph.setYRange(0, 100);
+  
   surface.setResizable(true);
   serialInterface.Start(this);
   csv.makeFile();
@@ -14,6 +28,7 @@ void draw(){
   canvas_background();
   options();
   user_input();
+  onWindowSizeChanged();
   serialInterface.receiveMessage();
 }
 
@@ -50,7 +65,11 @@ void canvas_background(){
   line(0, height/2, width, height/2);
   
 }
-
+void onWindowSizeChanged() {
+  tempGraph.updateRatio();
+  phGraph.updateRatio();
+  motorGraph.updateRatio();
+}
 
 
 void user_input(){
@@ -74,10 +93,6 @@ void user_input(){
 float x_sf(){
   return (float)width/700;
 }
-
-
-
-
 float y_sf(){
   return (float)height/700;
 }
