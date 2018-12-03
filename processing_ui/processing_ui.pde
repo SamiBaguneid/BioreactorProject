@@ -78,12 +78,7 @@ void user_input(){
   int box_width = round(80 * x_sf());
   int x_bezel = round(18 * x_sf());
   int y_bezel = round(150 * y_sf());
-  rect(lowest_x + x_bezel, lowest_y + y_bezel, box_width, box_width);
-  rect(lowest_x + x_bezel*2 + box_width, lowest_y + y_bezel, box_width, box_width);
-  fill(255);
-  rect((lowest_x + x_bezel*3 + box_width*2), (lowest_y + y_bezel + box_width - 20*y_sf()), 20*x_sf(), 20*y_sf());
-  fill(0);
-  rect(lowest_x + x_bezel*4 + box_width*2 + 20*x_sf(), lowest_y + y_bezel, box_width, box_width);
+  rect(lowest_x + x_bezel, lowest_y + y_bezel, width/2 - x_bezel*2, box_width);
 }
 void mouseClicked(){
   int no_of_options = 3;
