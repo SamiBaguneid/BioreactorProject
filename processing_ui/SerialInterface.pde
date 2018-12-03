@@ -43,6 +43,8 @@ class SerialInterface{
       }else if (sensor == 2){
         tempGraph.addData(time, val);
       }
+      println(phGraph.graphWriter.timeList);
+      println(phGraph.graphWriter.valueList);
     }else{
       println(msg);
     }

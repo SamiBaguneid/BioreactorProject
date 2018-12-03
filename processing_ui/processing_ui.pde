@@ -15,8 +15,8 @@ void setup(){
   tempGraph.setYRange(0, 1000);
   
   phGraph = new Graph(0, height/2, width/2, height/2);
-  phGraph.setXRange(0, 100000);
-  phGraph.setYRange(0, 100000);
+  phGraph.setXRange(0, 10000);
+  phGraph.setYRange(0, 10);
 
   motorGraph = new Graph(width/2, 0, width/2, height/2);
   motorGraph.setYRange(0, 100);
@@ -90,10 +90,6 @@ void user_input(){
   fill(0);
   rect(lowest_x + x_bezel*4 + box_width*2 + 20, lowest_y + y_bezel, box_width, box_width);
 }
-
-
-
-
 
 float x_sf(){
   return (float)width/700;
