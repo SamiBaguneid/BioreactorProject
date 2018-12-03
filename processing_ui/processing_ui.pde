@@ -34,7 +34,7 @@ void draw(){
 
 void options(){
   int no_of_options = 3;
-  String[] options = {"Temp", "pH", "Motor"};
+  String[] options = {"Temp", "   pH", "Motor"};
   int bezel_height = round(20 * y_sf());
   int rect_width = round(100 * x_sf());
   int rect_height = round(35 * y_sf());
