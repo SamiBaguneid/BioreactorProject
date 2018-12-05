@@ -1,11 +1,11 @@
 char *incMsg = malloc(sizeof(char) * 256);
 
 float targets[] = {0, 0, 0};
-int lastUpdateTime[] = {0, 0, 0};
+unsigned long lastUpdateTime[] = {0, 0, 0};
 
 float values[] = {0, 0, 0};
 
-long int sendInterval = 2000;
+long int sendInterval = 20;
 long int lastSendTime = 0;
 
 int decimalPlaces = 3;
@@ -16,14 +16,14 @@ void setup() {
   motor_setup();
   ph_setup();
   temp_setup();
-  sendDebug("test");
+  sendDebug("Started");
 }
 
 void loop() {
   motor_loop();
   ph_loop();
   temp_loop();
-
+  //sendReading(0, 700);
   if (lastSendTime + sendInterval < millis()){
     receiveSerial();
     for (int i = 0; i < 3; i++){
