@@ -1,11 +1,11 @@
 char *incMsg = malloc(sizeof(char) * 256);
 
-float targets[] = {0, 0, 0};
+float targets[] = {600, 0, 0};
 unsigned long lastUpdateTime[] = {0, 0, 0};
 
 float values[] = {0, 0, 0};
 
-long int sendInterval = 20;
+long int sendInterval = 1000;
 long int lastSendTime = 0;
 
 int decimalPlaces = 3;
@@ -20,10 +20,10 @@ void setup() {
 }
 
 void loop() {
-  motor_loop();
+  //motor_loop();
   ph_loop();
   temp_loop();
-  //sendReading(0, 700);
+  sendReading(0, targets[0]);
   if (lastSendTime + sendInterval < millis()){
     receiveSerial();
     for (int i = 0; i < 3; i++){
@@ -72,6 +72,7 @@ void receiveSerial(){
     char c = Serial.read();
     if (c == '\n'){
       processMessage(incMsg);
+      sendDebug(incMsg);
       *incMsg = 0;
     }else{
       appendString(incMsg, c);
@@ -79,16 +80,16 @@ void receiveSerial(){
   }
 }
 void processMessage(char *msg){
-  sendDebug(msg);
   if (startswith(msg, "SET ")){
     char* constant = splitSpace(msg + 4);
     char* value = splitSpace(msg + len(constant) - 1);
     float val = strToFloat(value);
-    if (constant == "targetMotorSpeed"){
+    sendDebug(msg);
+    if (compareString(constant, "targetMotorSpeed")){
         targets[0] = val;
-    }else if (constant == "targetPH"){
+    }else if (compareString(constant, "targetPH")){
         targets[1] = val;
-    }else if (constant == "targetTemperature"){
+    }else if (compareString(constant, "targetTemperature")){
         targets[2] = val;
     }
     free(constant);
@@ -105,6 +106,14 @@ void appendString(char *string, char a){
   }
   *(string + i++) = a;
   *(string + i) = 0;
+}
+bool compareString(char *a, char *b){
+  for (int i = 0; *(a + i) != 0 && *(b + i) != 0; i++){
+    if (*(a + i) != *(b + i)){
+      return false;
+    }
+  }
+  return true;
 }
 float strToFloat(char *val){
   bool negative = false;
