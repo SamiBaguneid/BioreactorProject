@@ -6,6 +6,7 @@ CSV csv = new CSV();
 Graph tempGraph;
 Graph phGraph;
 Graph motorGraph;
+int mouse_clicked = 0;
 
 void setup(){
   size(700, 700);
@@ -79,6 +80,9 @@ void user_input(){
   int x_bezel = round(18 * x_sf());
   int y_bezel = round(150 * y_sf());
   rect(lowest_x + x_bezel, lowest_y + y_bezel, width/2 - x_bezel*2, box_width);
+  fill(255);
+  textSize(70);
+  text(text_box, lowest_x + x_bezel, lowest_y + y_bezel + box_width - 15*y_sf());
 }
 void mouseClicked(){
   int no_of_options = 3;
@@ -91,18 +95,33 @@ void mouseClicked(){
   if(mouseY > lowest_y + bezel_height && mouseY < lowest_y + bezel_height + rect_height){
     if(mouseX > lowest_x + bezel_width && mouseX <  lowest_x + bezel_width + rect_width){
       println(mouseX); 
+      mouse_clicked = 1;
     }
     if(mouseX > lowest_x + bezel_width*2 + rect_width && mouseX <  lowest_x + bezel_width*2 + rect_width*2){
       println(mouseX);
+      mouse_clicked = 2;
     }
     if(mouseX > lowest_x + bezel_width*3 + rect_width*2 && mouseX <  lowest_x + bezel_width*3 + rect_width*3){
       println(mouseX);
+      mouse_clicked = 3;
     }
   }
 }
 
-
-
+  String text_box = "";
+void keyPressed(){
+  if(mouse_clicked < 4 && mouse_clicked != 0){
+    if(key != 10){
+      text_box += char(key);
+      println(text_box);
+    }
+    else{
+      mouse_clicked = 0;
+      // SEND INFORMATION TO ARDUINO HERE use if statements if mouse_clicked == 1 then thats temp 2 is ph 3 is motor
+      text_box = "";
+    }
+  }
+}
 
 
 float x_sf(){
