@@ -6,6 +6,7 @@ CSV csv = new CSV();
 Graph tempGraph;
 Graph phGraph;
 Graph motorGraph;
+String input = "0.0";
 
 void setup(){
   size(700, 700);
@@ -38,7 +39,29 @@ void draw(){
   serialInterface.receiveMessage();
   //tempGraph.addData((float) millis() / 1000, random(0,40));
 }
-
+void keyPressed(){
+  char[] acceptedKeys = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.', RETURN, ENTER, BACKSPACE};
+  if (contains(acceptedKeys, key)){
+    if (key == RETURN || key == ENTER){
+      
+    }else if (key == BACKSPACE){
+      if (input.length() > 0){
+        input = input.substring(0, input.length() - 1);
+      }
+    }else{
+      input += key;
+    }
+  }
+  println(input);
+}
+boolean contains(char[] cs, char c){
+  for (int i = 0; i < cs.length; i++){
+    if (cs[i] == c){
+      return true;
+    }
+  }
+  return false;
+}
 void options(){
   int no_of_options = 3;
   String[] options = {"Temp", "   pH", "Motor"};
@@ -86,6 +109,8 @@ void user_input(){
   int x_bezel = round(18 * x_sf());
   int y_bezel = round(150 * y_sf());
   rect(lowest_x + x_bezel, lowest_y + y_bezel, width/2 - x_bezel*2, box_width);
+  fill(#FFFFFF);
+  text(input, lowest_x + x_bezel + 20, lowest_y + y_bezel + 2 * box_width / 3);
 }
 void mouseClicked(){
   int no_of_options = 3;
