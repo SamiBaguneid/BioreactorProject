@@ -44,17 +44,19 @@ class SerialInterface{
       println(msg);
     }else if (args[0].equals("SENSOR")){
       //Use sensor reading
-      if (args.length >= 3){
+      if (args.length >= 4){
         int sensor = int(args[1]);
         int time = int(args[2]);
         float val = float(args[3]);
+        float t = (float) time / 1000;
         csv.addData(sensor, time, val);
         if (sensor == 0){
-          motorGraph.addData((float) time/1000, val);
+          motorGraph.setXRange((int) t - 9, (int) t+1);
+          motorGraph.addData(t, val);
         }else if (sensor == 1){
-          phGraph.addData((float) time/1000, val);
+          phGraph.addData(t, val);
         }else if (sensor == 2){
-          tempGraph.addData((float) time/1000, val);
+          tempGraph.addData(t, val);
         }
       }
     }else{
