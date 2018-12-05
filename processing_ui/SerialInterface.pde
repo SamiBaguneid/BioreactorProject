@@ -5,6 +5,9 @@ class SerialInterface{
   void Start(PApplet parent){
     if (Serial.list().length > 0){ 
       port = new Serial(parent, Serial.list()[0], 9600);
+      SetConstant(0);
+      SetConstant(1);
+      SetConstant(2);
     }else{
       println("NO USB DEVICES");
     }
@@ -13,13 +16,13 @@ class SerialInterface{
   void SetConstant(String constant, float value){
     port.write("SET " + constant + " " + str(value) + "\n");
   }
-  void SetConstant(int target, float value){
+  void SetConstant(int target){
     if (target == 0){
-      SetConstant("targetMotorSpeed", value);
+      SetConstant("targetMotorSpeed", targets[target]);
     }else if (target == 1){
-      SetConstant("targetPH", value);
+      SetConstant("targetPH", targets[target]);
     }else if (target == 2){
-      SetConstant("targetTemperature", value);
+      SetConstant("targetTemperature", targets[target]);
     }
   }
   void receiveMessage(){
