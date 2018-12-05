@@ -43,7 +43,7 @@ void draw(){
   phGraph.plotAll();
   motorGraph.plotAll();
   serialInterface.receiveMessage();
-  //tempGraph.addData((float) millis() / 1000, random(0,40));
+  tempGraph.addData((float) millis() / 1000, random(0,40));
 }
 void keyPressed(){
   char[] acceptedKeys = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.', RETURN, ENTER, BACKSPACE};
