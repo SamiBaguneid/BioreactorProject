@@ -55,6 +55,7 @@ class SerialInterface{
         }else if (sensor == 2){
           tempGraph.addData((float) time/1000, val);
         }
+        
       }
     }else{
       println(msg);

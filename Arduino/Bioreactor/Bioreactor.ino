@@ -16,14 +16,14 @@ void setup() {
   motor_setup();
   ph_setup();
   temp_setup();
-  sendDebug("test");
+  sendDebug("Started");
 }
 
 void loop() {
   motor_loop();
   ph_loop();
   temp_loop();
-
+  //sendReading(0, 700);
   if (lastSendTime + sendInterval < millis()){
     receiveSerial();
     for (int i = 0; i < 3; i++){
