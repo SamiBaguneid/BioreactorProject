@@ -26,8 +26,6 @@ void setup(){
   tempGraph.setXRange(0, 10);
   tempGraph.setYRange(20, 40);
   
-
-  
   surface.setResizable(true);
   serialInterface.Start(this);
   csv.makeFile();

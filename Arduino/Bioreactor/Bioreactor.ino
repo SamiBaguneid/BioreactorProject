@@ -20,7 +20,7 @@ void setup() {
 }
 
 void loop() {
-  //motor_loop();
+  motor_loop();
   ph_loop();
   temp_loop();
 
