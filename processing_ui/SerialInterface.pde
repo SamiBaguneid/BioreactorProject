@@ -13,7 +13,15 @@ class SerialInterface{
   void SetConstant(String constant, float value){
     port.write("SET " + constant + " " + str(value) + "\n");
   }
-  
+  void SetConstant(int target, float value){
+    if (target == 0){
+      SetConstant("targetMotorSpeed", value);
+    }else if (target == 1){
+      SetConstant("targetPH", value);
+    }else if (target == 2){
+      SetConstant("targetTemperature", value);
+    }
+  }
   void receiveMessage(){
     while (port != null && port.available() > 0){
       char c = port.readChar();

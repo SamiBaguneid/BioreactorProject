@@ -52,6 +52,7 @@ void keyPressed(){
       if (!Float.isNaN(float(input))){
         targets[inputMode] = float(input);
         input = str(targets[inputMode]);
+        serialInterface.SetConstant(inputMode, targets[inputMode]);
       }
     }else if (key == BACKSPACE){
       if (input.length() > 0){
