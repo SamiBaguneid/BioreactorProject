@@ -59,8 +59,12 @@ void graphDraw(){
     if (i == 5) {
       line((float)(15*xRatio),(float)(yPos*yRatio),(float)(350*xRatio),(float)(yPos*yRatio));
     }
-    //stroke(160);
-    //line((float)(25*xRatio),(float)(yPos*yRatio),(float)(350*xRatio),(float)(yPos*yRatio));
+    stroke(160);
+    line((float)(25*xRatio),(float)(yPos*yRatio),(float)(350*xRatio),(float)(yPos*yRatio));
+    if (i == 5) {
+      stroke(255);
+      line((float)(15*xRatio),(float)(yPos*yRatio),(float)(350*xRatio),(float)(yPos*yRatio));
+    }
     float textSize = 12*yRatio;
     // Limits minimum text size so it is still readable
     if (textSize < 10) {
@@ -85,10 +89,6 @@ void graphDraw(){
     if (i == 1) {
       line((float)(375*xRatio),(float)(25*yRatio),(float)(375*xRatio),(float)(325*yRatio));
     }
-    //if (i == 5) {
-    //  stroke(255);
-    //  line((float)(365*xRatio),(float)(yPos*yRatio),(float)(700*xRatio),(float)(yPos*yRatio));
-    //}
     stroke(128);
     line((float)(375*xRatio),(float)(yPos*yRatio),(float)(700*xRatio),(float)(yPos*yRatio));
     if (i == 5) {
@@ -119,7 +119,10 @@ void graphDraw(){
     if (i == 1) {
       line((float)(25*xRatio),(float)(375*yRatio),(float)(25*xRatio),(float)(675*yRatio));
     }
+    stroke(160);
+    line((float)(25*xRatio),(float)(yPos*yRatio),(float)(350*xRatio),(float)(yPos*yRatio));
     if (i == 5) {
+      stroke(255);
       line((float)(15*xRatio),(float)(yPos*yRatio),(float)(350*xRatio),(float)(yPos*yRatio));
     }
     float textSize = 12*yRatio;

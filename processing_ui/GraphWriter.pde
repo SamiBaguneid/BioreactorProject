@@ -74,7 +74,10 @@ class GraphWriter {
 
   void writeBackground() {
     noStroke();
-    color c = #030F1F;
+    // Dark blue
+    //color c = #030F1F;
+    // Black
+    color c = #000000;
     fill(c);
     rect(this.gX, this.gY, this.gWidth, this.gHeight);
   }
