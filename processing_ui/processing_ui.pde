@@ -6,10 +6,14 @@ CSV csv = new CSV();
 Graph tempGraph;
 Graph phGraph;
 Graph motorGraph;
+<<<<<<< HEAD
+int mouse_clicked = 0;
+=======
 String input = "0.0";
 int inputMode = 0;
 
 float[] targets = {700.0, 5.0, 30.0};
+>>>>>>> a73c6e34af4d6877f298473ff50d9873ed1b410e
 
 void setup(){
   size(700, 700);
@@ -126,8 +130,14 @@ void user_input(){
     fill(#D32F2F);
   }
   rect(lowest_x + x_bezel, lowest_y + y_bezel, width/2 - x_bezel*2, box_width);
+<<<<<<< HEAD
+  fill(255);
+  textSize(70);
+  text(text_box, lowest_x + x_bezel, lowest_y + y_bezel + box_width - 15*y_sf());
+=======
   fill(#FFFFFF);
   text(input, lowest_x + x_bezel + 20, lowest_y + y_bezel + 2 * box_width / 3);
+>>>>>>> a73c6e34af4d6877f298473ff50d9873ed1b410e
 }
 void mouseClicked(){
   int no_of_options = 3;
@@ -139,6 +149,18 @@ void mouseClicked(){
   int bezel_width = ((width/2)%rect_width)/(no_of_options + 1);
   if(mouseY > lowest_y + bezel_height && mouseY < lowest_y + bezel_height + rect_height){
     if(mouseX > lowest_x + bezel_width && mouseX <  lowest_x + bezel_width + rect_width){
+<<<<<<< HEAD
+      println(mouseX); 
+      mouse_clicked = 1;
+    }
+    if(mouseX > lowest_x + bezel_width*2 + rect_width && mouseX <  lowest_x + bezel_width*2 + rect_width*2){
+      println(mouseX);
+      mouse_clicked = 2;
+    }
+    if(mouseX > lowest_x + bezel_width*3 + rect_width*2 && mouseX <  lowest_x + bezel_width*3 + rect_width*3){
+      println(mouseX);
+      mouse_clicked = 3;
+=======
       inputMode = 0;
       input = str(targets[inputMode]);
     }
@@ -149,10 +171,30 @@ void mouseClicked(){
     if(mouseX > lowest_x + bezel_width*3 + rect_width*2 && mouseX <  lowest_x + bezel_width*3 + rect_width*3){
       inputMode = 2;
       input = str(targets[inputMode]);
+>>>>>>> a73c6e34af4d6877f298473ff50d9873ed1b410e
     }
   }
 }
 
+<<<<<<< HEAD
+  String text_box = "";
+void keyPressed(){
+  if(mouse_clicked < 4 && mouse_clicked != 0){
+    if(key != 10){
+      text_box += char(key);
+      println(text_box);
+    }
+    else{
+      mouse_clicked = 0;
+      // SEND INFORMATION TO ARDUINO HERE use if statements if mouse_clicked == 1 then thats temp 2 is ph 3 is motor
+      text_box = "";
+    }
+  }
+}
+
+
+=======
+>>>>>>> a73c6e34af4d6877f298473ff50d9873ed1b410e
 float x_sf(){
   return (float)width/700;
 }
