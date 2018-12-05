@@ -14,7 +14,7 @@ float[] targets = {700.0, 5.0, 30.0};
 void setup(){
   size(700, 700);
   
-  motorGraph = new Graph(0, 0, width/2, height/2);
+  motorGraph = new Graph(0, height/2, width/2, height/2);
   motorGraph.setXRange(0, 10);
   motorGraph.setYRange(0, 2000);
   
@@ -22,7 +22,7 @@ void setup(){
   phGraph.setXRange(0, 10);
   phGraph.setYRange(0, 7);
   
-  tempGraph = new Graph(0, height/2, width / 2, height / 2);
+  tempGraph = new Graph(0, 0, width / 2, height / 2);
   tempGraph.setXRange(0, 10);
   tempGraph.setYRange(20, 40);
   
@@ -42,6 +42,98 @@ void draw(){
   motorGraph.plotAll();
   serialInterface.receiveMessage();
   tempGraph.addData((float) millis() / 1000, random(0,40));
+  graphDraw();
+}
+void graphDraw(){
+  // Temperature graph Axis
+  for (int i = 1; i <= 5; i++){
+    stroke(255);
+    float yLength = 75;
+    float yPos = yLength*i + 25 - yLength;
+    float xRatio = (float)width/700;
+    float yRatio = (float)height/700;
+    line((float)(15*xRatio),(float)(yPos*yRatio),(float)(25*xRatio),(float)(yPos*yRatio));
+    if (i == 1) {
+      line((float)(25*xRatio),(float)(25*yRatio),(float)(25*xRatio),(float)(325*yRatio));
+    }
+    if (i == 5) {
+      line((float)(15*xRatio),(float)(yPos*yRatio),(float)(350*xRatio),(float)(yPos*yRatio));
+    }
+    //stroke(160);
+    //line((float)(25*xRatio),(float)(yPos*yRatio),(float)(350*xRatio),(float)(yPos*yRatio));
+    float textSize = 12*yRatio;
+    // Limits minimum text size so it is still readable
+    if (textSize < 10) {
+      textSize = 10;
+    }
+    textSize(textSize);
+    fill(255);
+    int temp = 100;
+    text(temp/i, 5*xRatio, (yPos - 1)*yRatio);
+    text("Temperature", 5*xRatio, 10*yRatio);
+    text("Time", 320*xRatio, 337*yRatio);
+  }
+  
+  // pH graph Axis
+  for (int i = 1; i <= 5; i++){
+    stroke(255);
+    float yLength = 75;
+    float yPos = yLength*i + 25 - yLength;
+    float xRatio = (float)width/700;
+    float yRatio = (float)height/700;
+    line((float)(365*xRatio),(float)(yPos*yRatio),(float)(375*xRatio),(float)(yPos*yRatio));
+    if (i == 1) {
+      line((float)(375*xRatio),(float)(25*yRatio),(float)(375*xRatio),(float)(325*yRatio));
+    }
+    //if (i == 5) {
+    //  stroke(255);
+    //  line((float)(365*xRatio),(float)(yPos*yRatio),(float)(700*xRatio),(float)(yPos*yRatio));
+    //}
+    stroke(128);
+    line((float)(375*xRatio),(float)(yPos*yRatio),(float)(700*xRatio),(float)(yPos*yRatio));
+    if (i == 5) {
+      stroke(255);
+      line((float)(365*xRatio),(float)(yPos*yRatio),(float)(700*xRatio),(float)(yPos*yRatio));
+    }
+    float textSize = 12*yRatio;
+    // Limits minimum text size so it is still readable
+    if (textSize < 10) {
+      textSize = 10;
+    }
+    textSize(textSize);
+    fill(255);
+    int temp = 100;
+    text(temp/i, 355*xRatio, (yPos - 1)*yRatio);
+    text("pH", 360*xRatio, 10*yRatio);
+    text("Time", 670*xRatio, 337*yRatio);
+  }
+  
+  // Motor graph Axis
+  for (int i = 1; i <= 5; i++){
+    stroke(255);
+    float yLength = 75;
+    float yPos = yLength*i + 375 - yLength;
+    float xRatio = (float)width/700;
+    float yRatio = (float)height/700;
+    line((float)(15*xRatio),(float)(yPos*yRatio),(float)(25*xRatio),(float)(yPos*yRatio));
+    if (i == 1) {
+      line((float)(25*xRatio),(float)(375*yRatio),(float)(25*xRatio),(float)(675*yRatio));
+    }
+    if (i == 5) {
+      line((float)(15*xRatio),(float)(yPos*yRatio),(float)(350*xRatio),(float)(yPos*yRatio));
+    }
+    float textSize = 12*yRatio;
+    // Limits minimum text size so it is still readable
+    if (textSize < 10) {
+      textSize = 10;
+    }
+    textSize(textSize);
+    fill(255);
+    int temp = 100;
+    text(temp/i, 5*xRatio, (yPos - 1)*yRatio);
+    text("Motor", 5*xRatio, 360*yRatio);
+    text("Time", 320*xRatio, 687*yRatio);
+  }
 }
 void keyPressed(){
   char[] acceptedKeys = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.', RETURN, ENTER, BACKSPACE};
