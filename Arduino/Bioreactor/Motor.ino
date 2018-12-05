@@ -12,7 +12,7 @@
 const int photoPin = A0;
 const int transistorPin = 9;
 
-int startValue = 150;
+int startValue = 32;
   
 int photoInterruptCount = 0;
 int photoSensorValue = 0;
@@ -53,11 +53,11 @@ void calculateRPM() {
 }
 
 void checkRPM() {
-  if(RPM < (requiredRPM - 15)) {
+  if(RPM < (requiredRPM - 1)) {
     startValue += 10;
     analogWrite(transistorPin, startValue);
   }
-  else if(RPM > (requiredRPM + 15)) {
+  else if(RPM > (requiredRPM + 1)) {
     startValue -= 10;
     analogWrite(transistorPin, startValue);
   }
@@ -68,7 +68,6 @@ void motor_setup(){
   Serial.println("Motor setup executed");
 }
 void motor_loop(){
-
   checkRequiredRPM();
   getPhotoInterrupt();
   calculateRPM();

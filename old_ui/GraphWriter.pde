@@ -68,14 +68,18 @@ class GraphWriter {
       //float xPos = map(xValue, this.xMin, this.xMax, this.gX, this.gX + this.gWidth);
       float xPos = map(xValue, 0, valueList.size(), this.gX, this.gX + this.gWidth);
       float yPos = map(yValue, this.yMin, this.yMax, this.gY + this.gHeight, this.gY );
-      point(xPos, yPos);
+      if (xPos > this.gX + (this.gWidth*0.071)){      
+        point(xPos, yPos);
+      }
     }
   }
 
   void writeBackground() {
     noStroke();
-    color c = #030F1F;
+    //color c = #030F1F;
+    color c = #000000;
     fill(c);
     rect(this.gX, this.gY, this.gWidth, this.gHeight);
   }
+  
 }
