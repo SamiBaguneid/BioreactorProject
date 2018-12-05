@@ -5,7 +5,7 @@ unsigned long lastUpdateTime[] = {0, 0, 0};
 
 float values[] = {0, 0, 0};
 
-long int sendInterval = 1000;
+long int sendInterval = 10;
 long int lastSendTime = 0;
 
 int decimalPlaces = 3;

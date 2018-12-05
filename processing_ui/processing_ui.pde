@@ -41,7 +41,7 @@ void draw(){
   phGraph.plotAll();
   motorGraph.plotAll();
   serialInterface.receiveMessage();
-  tempGraph.addData((float) millis() / 1000, random(0,40));
+  //tempGraph.addData((float) millis() / 1000, random(0,40));
   graphDraw();
 }
 void graphDraw(){

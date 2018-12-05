@@ -5,6 +5,7 @@ class SerialInterface{
   void Start(PApplet parent){
     if (Serial.list().length > 0){ 
       port = new Serial(parent, Serial.list()[0], 9600);
+      port.clear();
       SetConstant(0);
       SetConstant(1);
       SetConstant(2);
