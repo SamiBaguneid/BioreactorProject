@@ -23,7 +23,6 @@ void loop() {
   //motor_loop();
   ph_loop();
   temp_loop();
-  sendReading(1, millis() / 1000);
 
   if (lastSendTime + sendInterval < millis()){
     receiveSerial();

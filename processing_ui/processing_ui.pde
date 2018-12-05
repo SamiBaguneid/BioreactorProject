@@ -11,15 +11,16 @@ void setup(){
   size(700, 700);
   
   tempGraph = new Graph(0, 0, width / 2, height / 2);
-  tempGraph.setXRange(0, 100000);
-  tempGraph.setYRange(0, 1000);
+  tempGraph.setXRange(0, 10);
+  tempGraph.setYRange(20, 40);
   
   phGraph = new Graph(0, height/2, width/2, height/2);
-  phGraph.setXRange(0, 10000);
-  phGraph.setYRange(0, 10);
+  phGraph.setXRange(0, 10);
+  phGraph.setYRange(0, 7);
 
   motorGraph = new Graph(width/2, 0, width/2, height/2);
-  motorGraph.setYRange(0, 100);
+  motorGraph.setXRange(0, 10);
+  motorGraph.setYRange(0, 1000);
   
   surface.setResizable(true);
   serialInterface.Start(this);
@@ -35,6 +36,7 @@ void draw(){
   phGraph.plotAll();
   motorGraph.plotAll();
   serialInterface.receiveMessage();
+  //tempGraph.addData((float) millis() / 1000, random(0,40));
 }
 
 void options(){
