@@ -52,7 +52,7 @@ class Graph {
     this.graphWriter.setYRange(min, max);
   }
 
-  void setXRange(int min, int max) {
+  void setXRange(float min, float max) {
     this.graphWriter.setXRange(min, max);
   }
   

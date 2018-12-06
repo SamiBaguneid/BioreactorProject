@@ -73,7 +73,7 @@ void graphDraw(){
     textSize(textSize);
     fill(255);
     int temp = 100;
-    text(temp/i, 5*xRatio, (yPos - 1)*yRatio);
+    //text(temp/i, 5*xRatio, (yPos - 1)*yRatio);
     text("Temperature", 5*xRatio, 10*yRatio);
     text("Time", 320*xRatio, 337*yRatio);
   }
@@ -103,7 +103,7 @@ void graphDraw(){
     textSize(textSize);
     fill(255);
     int temp = 100;
-    text(temp/i, 355*xRatio, (yPos - 1)*yRatio);
+    //text(temp/i, 355*xRatio, (yPos - 1)*yRatio);
     text("pH", 360*xRatio, 10*yRatio);
     text("Time", 670*xRatio, 337*yRatio);
   }
@@ -115,15 +115,15 @@ void graphDraw(){
     float yPos = yLength*i + 375 - yLength;
     float xRatio = (float)width/700;
     float yRatio = (float)height/700;
-    line((float)(15*xRatio),(float)(yPos*yRatio),(float)(25*xRatio),(float)(yPos*yRatio));
+    line(15*xRatio,yPos*yRatio,25*xRatio,yPos*yRatio);
     if (i == 1) {
-      line((float)(25*xRatio),(float)(375*yRatio),(float)(25*xRatio),(float)(675*yRatio));
+      line(25*xRatio,375*yRatio,25*xRatio,675*yRatio);
     }
     stroke(160);
-    line((float)(25*xRatio),(float)(yPos*yRatio),(float)(350*xRatio),(float)(yPos*yRatio));
+    line(25*xRatio,yPos*yRatio,350*xRatio,yPos*yRatio);
     if (i == 5) {
       stroke(255);
-      line((float)(15*xRatio),(float)(yPos*yRatio),(float)(350*xRatio),(float)(yPos*yRatio));
+      line(15*xRatio,yPos*yRatio,350*xRatio,yPos*yRatio);
     }
     float textSize = 12*yRatio;
     // Limits minimum text size so it is still readable
@@ -133,7 +133,7 @@ void graphDraw(){
     textSize(textSize);
     fill(255);
     int temp = 100;
-    text(temp/i, 5*xRatio, (yPos - 1)*yRatio);
+    //text(temp/i, 5*xRatio, (yPos - 1)*yRatio);
     text("Motor", 5*xRatio, 360*yRatio);
     text("Time", 320*xRatio, 687*yRatio);
   }

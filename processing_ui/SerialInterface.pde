@@ -51,7 +51,7 @@ class SerialInterface{
         float t = (float) time / 1000;
         csv.addData(sensor, time, val);
         if (sensor == 0){
-          motorGraph.setXRange((int) t - 9, (int) t+1);
+          motorGraph.setXRange(t - 9, t+1);
           motorGraph.addData(t, val);
         }else if (sensor == 1){
           phGraph.addData(t, val);

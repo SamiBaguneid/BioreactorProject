@@ -4,10 +4,10 @@ class GraphWriter {
   int gHeight = 50;
   int gX = 0;
   int gY = 50;
-  int yMin = 0;
-  int yMax = 350;
-  int xMin = 0;
-  int xMax = 350;
+  float yMin = 0;
+  float yMax = 350;
+  float xMin = 0;
+  float xMax = 350;
   int dataSize = 0;
 
   ArrayList<Float> valueList;
@@ -32,7 +32,7 @@ class GraphWriter {
     this.yMax = max;
   }
 
-  void setXRange(int min, int max) {
+  void setXRange(float min, float max) {
     this.xMin = min;
     this.xMax = max;
   }
@@ -68,7 +68,10 @@ class GraphWriter {
       float xPos = map(xValue, this.xMin, this.xMax, this.gX, this.gX + this.gWidth);
       //float xPos = map(xValue, 0, valueList.size(), this.gX, this.gX + this.gWidth);
       float yPos = map(yValue, this.yMin, this.yMax, this.gY + this.gHeight, this.gY );
-      point(xPos, yPos);
+      
+      if (xPos > this.gX){
+        point(xPos, yPos);
+      }
     }
   }
 
