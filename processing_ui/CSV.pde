@@ -2,7 +2,7 @@ class CSV{
   PrintWriter stream;
   String nl = "\n";
   int dataCount = 0;
-  int flushDataLimit = 256;
+  int flushDataLimit = 10;
   void makeFile(){
     stream = createWriter("log/" 
     + String.valueOf(year()) + "-" 
@@ -15,7 +15,7 @@ class CSV{
     );
     stream.print("Time (ms),Motor Speed,PH,Temperature" + nl);
   }
-  void addData(int time, int sensor, float val){
+  void addData(int sensor, int time, float val){
     stream.print(time);
     stream.print(",");
     for (int i = 0; i < sensor; i++){
