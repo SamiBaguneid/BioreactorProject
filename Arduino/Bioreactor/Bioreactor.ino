@@ -20,10 +20,10 @@ void setup() {
 }
 
 void loop() {
-  //motor_loop();
+  motor_loop();
   ph_loop();
   temp_loop();
-  sendReading(0, targets[0]);
+  //sendReading(0, targets[0]);
   if (lastSendTime + sendInterval < millis()){
     receiveSerial();
     for (int i = 0; i < 3; i++){
