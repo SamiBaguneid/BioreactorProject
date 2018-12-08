@@ -72,7 +72,6 @@ void graphDraw(){
     }
     textSize(textSize);
     fill(255);
-    int temp = 100;
     //text(temp/i, 5*xRatio, (yPos - 1)*yRatio);
     text("Temperature", 5*xRatio, 10*yRatio);
     text("Time", 320*xRatio, 337*yRatio);
@@ -102,7 +101,6 @@ void graphDraw(){
     }
     textSize(textSize);
     fill(255);
-    int temp = 100;
     //text(temp/i, 355*xRatio, (yPos - 1)*yRatio);
     text("pH", 360*xRatio, 10*yRatio);
     text("Time", 670*xRatio, 337*yRatio);
