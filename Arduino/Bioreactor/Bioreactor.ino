@@ -1,6 +1,6 @@
 char *incMsg = malloc(sizeof(char) * 256);
 
-float targets[] = {600, 0, 0};
+float targets[] = {600, 5, 30};
 unsigned long lastUpdateTime[] = {0, 0, 0};
 
 float values[] = {0, 0, 0};
@@ -24,12 +24,14 @@ void loop() {
   ph_loop();
   temp_loop();
   //sendReading(0, targets[0]);
+  //sendReading(1, targets[1]);
+  //sendReading(2, targets[2]);
   if (lastSendTime + sendInterval < millis()){
     receiveSerial();
     for (int i = 0; i < 3; i++){
       writeReading(i, values[i]);
     }
-    lastSendTime = millis();    
+    lastSendTime = millis();   
   }
 }
 float getReading(int sensor){

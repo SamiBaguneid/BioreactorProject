@@ -54,8 +54,10 @@ class SerialInterface{
           motorGraph.setXRange(t - 9, t+1);
           motorGraph.addData(t, val);
         }else if (sensor == 1){
+          phGraph.setXRange(t - 9, t+1);
           phGraph.addData(t, val);
         }else if (sensor == 2){
+          tempGraph.setXRange(t - 9, t+1);
           tempGraph.addData(t, val);
         }
       }

@@ -24,7 +24,7 @@ void setup(){
   
   tempGraph = new Graph(0, 0, width / 2, height / 2);
   tempGraph.setXRange(0, 10);
-  tempGraph.setYRange(20, 40);
+  tempGraph.setYRange(0, 40);
   
   surface.setResizable(true);
   serialInterface.Start(this);
@@ -72,7 +72,8 @@ void graphDraw(){
     }
     textSize(textSize);
     fill(255);
-    //text(temp/i, 5*xRatio, (yPos - 1)*yRatio);
+    int temp = 40;
+    text(temp*(5-i) / 4, 5*xRatio, (yPos - 1)*yRatio);
     text("Temperature", 5*xRatio, 10*yRatio);
     text("Time", 320*xRatio, 337*yRatio);
   }
@@ -100,8 +101,9 @@ void graphDraw(){
       textSize = 10;
     }
     textSize(textSize);
+    int ph = 7;
     fill(255);
-    //text(temp/i, 355*xRatio, (yPos - 1)*yRatio);
+    text(ph*(5-i) / 4, 355*xRatio, (yPos - 1)*yRatio);
     text("pH", 360*xRatio, 10*yRatio);
     text("Time", 670*xRatio, 337*yRatio);
   }
@@ -130,8 +132,8 @@ void graphDraw(){
     }
     textSize(textSize);
     fill(255);
-    int temp = 100;
-    //text(temp/i, 5*xRatio, (yPos - 1)*yRatio);
+    int temp = 2000;
+    text(temp*(5-i) / 4, 5*xRatio, (yPos - 1)*yRatio);
     text("Motor", 5*xRatio, 360*yRatio);
     text("Time", 320*xRatio, 687*yRatio);
   }
@@ -153,7 +155,6 @@ void keyPressed(){
       input += key;
     }
   }
-  println(input);
 }
 boolean contains(char[] cs, char c){
   for (int i = 0; i < cs.length; i++){

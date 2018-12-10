@@ -69,9 +69,7 @@ class GraphWriter {
       //float xPos = map(xValue, 0, valueList.size(), this.gX, this.gX + this.gWidth);
       float yPos = map(yValue, this.yMin, this.yMax, this.gY + this.gHeight, this.gY );
       
-      if (xPos > this.gX + 25 * width /700){
-        point(xPos, yPos);
-      }
+      point(xPos, yPos);
     }
   }
 
