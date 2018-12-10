@@ -61,7 +61,7 @@ void graphDraw(){
     if (i == 5) {
       line((float)(15*xRatio),(float)(yPos*yRatio),(float)(350*xRatio),(float)(yPos*yRatio));
     }
-    stroke(160);
+    stroke(#1A237E);
     line((float)(25*xRatio),(float)(yPos*yRatio),(float)(350*xRatio),(float)(yPos*yRatio));
     if (i == 5) {
       stroke(255);
@@ -91,7 +91,7 @@ void graphDraw(){
     if (i == 1) {
       line((float)(375*xRatio),(float)(25*yRatio),(float)(375*xRatio),(float)(325*yRatio));
     }
-    stroke(128);
+    stroke(#1A237E);
     line((float)(375*xRatio),(float)(yPos*yRatio),(float)(700*xRatio),(float)(yPos*yRatio));
     if (i == 5) {
       stroke(255);
@@ -121,7 +121,7 @@ void graphDraw(){
     if (i == 1) {
       line(25*xRatio,375*yRatio,25*xRatio,675*yRatio);
     }
-    stroke(160);
+    stroke(#1A237E);
     line(25*xRatio,yPos*yRatio,350*xRatio,yPos*yRatio);
     if (i == 5) {
       stroke(255);
