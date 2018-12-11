@@ -9,8 +9,8 @@
 // void sendReading(int sensor, float value)
 // void sendDebug(char *message)
 int voltage = A5;
-int red_pump = 13;
-int black_pump = 8;
+int red_pump = 8;
+int black_pump = 7;
 float desired_pH;
 float current_pH;
 float kelvin_T;
@@ -71,9 +71,10 @@ void ph_loop() {
   desired_pH = getTarget(1);
   float current_voltage = analogRead(voltage);
   current_voltage = 0.004936 * current_voltage;
-  celsius_to_kelvin(getReading(2));
+  celsius_to_kelvin(25);
   calculate_pH(current_voltage, kelvin_T);
   verify_pH();
   set_pump_low_black();
   set_pump_low_red();
+  digitalWrite(black_pump, HIGH);
 }

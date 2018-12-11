@@ -9,7 +9,7 @@
 // void sendReading(int sensor, float value)
 // void sendDebug(char *message)
 
-const int photoPin = A0;
+const int photoPin = A5;
 const int transistorPin = 9;
 
 int startValue = 32;
@@ -53,11 +53,11 @@ void calculateRPM() {
 }
 
 void checkRPM() {
-  if(RPM < (requiredRPM - 1)) {
+  if(RPM < 980) {
     startValue += 10;
     analogWrite(transistorPin, startValue);
   }
-  else if(RPM > (requiredRPM + 1)) {
+  else if(RPM > 1020) {
     startValue -= 10;
     analogWrite(transistorPin, startValue);
   }

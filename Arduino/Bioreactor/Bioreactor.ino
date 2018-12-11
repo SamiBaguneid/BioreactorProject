@@ -1,6 +1,6 @@
 char *incMsg = malloc(sizeof(char) * 256);
 
-float targets[] = {600, 5, 30};
+float targets[] = {600, 5, 50};
 unsigned long lastUpdateTime[] = {0, 0, 0};
 
 float values[] = {0, 0, 0};
@@ -20,7 +20,7 @@ void setup() {
 }
 
 void loop() {
-  motor_loop();
+  //motor_loop();
   ph_loop();
   temp_loop();
   //sendReading(0, targets[0]);
